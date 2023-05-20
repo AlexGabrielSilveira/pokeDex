@@ -9,7 +9,8 @@
 
     box-shadow: 0px 5px 20px 0px #9b9a9a;
     border: 1px solid #22222248;
-    width: auto;
+    width: 150px;
+    max-width: 150px;
 }
 .card ul {
     display: flex;
@@ -34,11 +35,14 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: white;
     padding: 5px;
     border-radius: 4px;
 }
-
+.type span {
+    padding: 5px;
+    background-color: white;
+    margin: 2px;
+}
 /* pokemon types */
 
 .poison {
@@ -81,10 +85,10 @@
     background-color: #d56723;
 }
 .ice {
-
+    background-color: #51c4e7;
 }
 .dark {
-
+ background-color: #707070;
 }
 .psychic {
     background-color: #f366b9;

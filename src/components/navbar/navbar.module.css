@@ -20,3 +20,16 @@
     margin-left: 15px;
     max-width: 40px;
 }
+.navbar div {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.navbar input {
+    padding: 10px;
+    margin-right: 20px;
+    width: 50%;
+    outline: none;
+    border: none;
+    background-color: #f2f2f2;
+}

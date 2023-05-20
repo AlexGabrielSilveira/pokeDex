@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import styles from './card.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Card({ pokemon }) {
     const[pokemonImage, setPokemonImage] = useState([])
@@ -21,19 +22,20 @@ export default function Card({ pokemon }) {
     useEffect(() => {
     getImagePokemon()
    }, [])
-   let types = {
-    poison: styles.poison,
-    grass: styles.grass,
-   }
 
     return (
         <div className={styles.card_container}>
             <div className={styles.card}>       
-                <Image src={pokemonImage} width="120" height="120" alt={pokemon.name}/>
+                <Link href={`/pokemon/${pokemon.id}`}><Image src={pokemonImage} width="120" height="120" alt={pokemon.name}/></Link>
                     <ul>
                         <li className={styles.strong}>Nº{pokemon.id}</li>
                         <li className={styles.pokemon_name}>{pokemon.name}</li>
-                        <div className={styles.type}>{pokemonType[0]} {pokemonType[1]}</div>
+                        <div className={styles.type}>
+                            <span>{pokemonType[0]}</span> 
+                            {pokemonType[1] && <span> 
+                                {pokemonType[1]}
+                            </span>}
+                        </div>
                     </ul>
             </div>
         </div>

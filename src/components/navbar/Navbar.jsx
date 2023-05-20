@@ -7,6 +7,9 @@ export default function Navbar() {
             <div className={styles.navbar}>
                 <Link href="/"><img src="pokeball.png" alt="Logo" /></Link>
                 <h1>PokeDex</h1>
+                <div>
+                    <input type="text" placeholder="Pesquise algo ..."/>
+                </div>
             </div>
         </nav>
     )
