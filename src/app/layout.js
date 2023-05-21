@@ -1,6 +1,5 @@
-import Navbar from '@/components/navbar/Navbar'
 import './globals.css'
-import Footer from '@/components/footer/Footer'
+import Navbar from '@/components/navbar/Navbar'
 
 export const metadata = {
   title: 'Pokedex',
@@ -9,11 +8,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body>
         <Navbar />
         <main className='main-container'>{children}</main>
-        <Footer />
       </body>
     </html>
   )

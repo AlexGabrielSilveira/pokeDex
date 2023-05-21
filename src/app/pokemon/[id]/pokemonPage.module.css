@@ -1,49 +1,49 @@
-.card_container {
+.infos_container {
+    margin-top: 80px;
     display: flex;
-}
-.card_container {
-    background-color: #e7e5e5;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-
-    box-shadow: 0px 5px 20px 0px #9b9a9a;
-    border: 1px solid #22222248;
-    width: 150px;
-    max-width: 150px;
-}
-.card ul {
-    display: flex;
+    align-items: center;
     flex-direction: column;
-}
-.strong {
-    color: #91919f;
-    font-weight: bold;
-    font-size: 10pt;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-.card li {
-    list-style-type: none;
-}
-.pokemon_name {
-    text-align: center;
-    color: #222;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-}
-.type {
-    display: flex;
-    justify-content: center;
     width: 100%;
+    border-radius: 5px;
+}
+.img, .list{
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px 1px #000000;
+    padding: 15px;
+}
+.list {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    width: 530px;
+    list-style: none;
+}
+.list hr {
+    margin: 5px;
+    height: 1px;
+    outline: none;
+    border: none;
+    background-color: #222;
+}
+.space {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.list_items {
+    background-color: #d42e2e;
     padding: 5px;
-}
-.type span {
-    border-radius: 50px;
     margin: 1px;
-    padding: 3px 8px 3px 8px;
+    border-radius: 5px;
 }
-
-/* pokemon types */
+.img p {
+    text-align: center;
+}
+.img span {
+    padding: 5px;
+    margin: 1px;
+}
 
 .poison {
     background-color: #b97fc9;

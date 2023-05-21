@@ -7,6 +7,7 @@ import Link from 'next/link'
 export default function Card({ pokemon }) {
     const[pokemonImage, setPokemonImage] = useState([])
     const[pokemonType, setPokemonType] = useState([])
+
     function getImagePokemon() {
 
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`)
@@ -19,6 +20,7 @@ export default function Card({ pokemon }) {
         })
 
     }
+    
     useEffect(() => {
     getImagePokemon()
    }, [])
@@ -31,10 +33,11 @@ export default function Card({ pokemon }) {
                         <li className={styles.strong}>Nº{pokemon.id}</li>
                         <li className={styles.pokemon_name}>{pokemon.name}</li>
                         <div className={styles.type}>
-                            <span>{pokemonType[0]}</span> 
-                            {pokemonType[1] && <span> 
+                            <span className={`${styles[pokemonType[0]]}`}>{pokemonType[0]}</span> 
+                            {pokemonType[1] && <span className={`${styles[pokemonType[1]]}`}> 
                                 {pokemonType[1]}
                             </span>}
+                           
                         </div>
                     </ul>
             </div>
