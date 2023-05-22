@@ -1,13 +1,15 @@
 "use client"
 
-import { useParams, useSearchParams } from "next/navigation"
+import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import styles from  "./pokemonPage.module.css"
 import Image from "next/image"
+import Loading from "@/components/loading/Loading"
 
 
 export default function Pokemon() {
     const[infos, setInfos] = useState([])
+    const[loading, setLoading ] = useState(true)
     const params = useParams()
 
     function getPokemonInfo() {
@@ -15,6 +17,7 @@ export default function Pokemon() {
         .then(res => res.json())
         .then(data => {
             setInfos(data)
+            setLoading(false)
         })
         
         
@@ -25,33 +28,40 @@ export default function Pokemon() {
 
     return (
         <>
+            { loading ? <Loading /> : (
             <div className={styles.infos_container}>
                 <div className={styles.img}>
-                    <Image src={infos.sprites?.other?.dream_world?.front_default} alt={infos.name} width="500" height="500" /> 
-                    <p><span className={`${styles[infos.types[0].type.name]}`}>{infos.types[0].type.name}</span> 
-                    {infos.types[1].type.name && <span className={`${styles[infos.types[1].type.name]}`}> 
+                    <Image src={infos.sprites?.other?.dream_world?.front_default} alt={infos.name} width="0" height="0" /> 
+                    <p>Tipo: <span className={`${infos.types[0].type.name}`}>{infos.types[0].type.name}</span> 
+                    {infos.types[1]?.type?.name && 
+                    <span className={`${infos.types[1].type.name}`}> 
                         {infos.types[1].type.name}
                     </span>
                     }
                     </p>
                 </div>
-                <ul className={styles.list}>
-                    <p><strong>Nº </strong> {infos.id}</p>
-                    <p><strong>Nome: </strong>{infos.name}</p>
-                    <p><strong>Hidden Ability: </strong>{infos?.abilities[1].ability.name}</p>
-                    <hr />
-                    <div className={styles.space}>
-                        <li className={styles.list_items}><strong>{infos.stats[0].stat.name} {infos.stats[0].base_stat}</strong></li> 
-                        <li className={styles.list_items}><strong>{infos.stats[1].stat.name} {infos.stats[1].base_stat}</strong></li>
-                        <li className={styles.list_items}><strong>{infos.stats[2].stat.name} {infos.stats[2].base_stat}</strong></li>
-                        <li className={styles.list_items}><strong>{infos.stats[3].stat.name} {infos.stats[3].base_stat}</strong></li> 
-                        <li className={styles.list_items}><strong>{infos.stats[4].stat.name} {infos.stats[4].base_stat}</strong></li>
-                        <li className={styles.list_items}><strong>{infos.stats[5].stat.name} {infos.stats[5].base_stat}</strong></li>
+                <div className={styles.pokemon_container}>
+                    <div className={styles.list}>
+                        <p><strong>Nº </strong> {infos.id}</p>
+                        <p><strong>Nome: </strong>{infos.name}</p>
+                        <p><strong>Hidden Ability: </strong>{infos?.abilities[1].ability.name}</p>
+                        <hr />
+                        <ul>
+                            {infos.stats.map((item) => (
+                                <li className={styles.list_items}><strong>{item.stat.name}: </strong>{item.base_stat} </li>
+                            ))}
+                        </ul>
+                    </div>           
+                    <h2>Lista de Movimentos de {infos.name}</h2>
+                    <div className={styles.move_list}>
+                       {infos.moves.map(i => (
+                        <p>{i.move.name}</p>
+                       ))}
                     </div>
-                </ul>           
-
+                </div>
             </div>
+            )}
+                
         </>
     )
 }
-// {`${styles[infos.types[0].type.name]}`}

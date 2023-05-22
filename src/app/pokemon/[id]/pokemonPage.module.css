@@ -1,102 +1,64 @@
 .infos_container {
     margin-top: 80px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    border-radius: 5px;
 }
-.img, .list{
-    background-color: #f2f2f2;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px 1px #000000;
-    padding: 15px;
-}
-.list {
-    border-radius: 5px;
-    margin: 5px;
-    padding: 10px;
-    width: 530px;
-    list-style: none;
-}
-.list hr {
-    margin: 5px;
-    height: 1px;
-    outline: none;
-    border: none;
-    background-color: #222;
-}
-.space {
-    display: flex;
-    justify-content: space-between;
+.img {
     text-align: center;
-}
-.list_items {
-    background-color: #d42e2e;
-    padding: 5px;
-    margin: 1px;
-    border-radius: 5px;
 }
 .img p {
-    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
 }
 .img span {
+    border-radius: 15px;
+    margin: 5px;
+    padding: 6px;
+}
+.img img{
+    width: 300px;
+    height: 300px;
+    background-color: #ebe9e9;
+    border-radius: 5px;
+}
+.list, .move_list {
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+.list hr {
+    margin: 10px 0px 10px 0px;
+}
+.list ul {
+    list-style: none;
+}
+.list_items {
+    background-color: #fff;
+    margin: 5px 0px 5px 0px;
     padding: 5px;
-    margin: 1px;
 }
-
-.poison {
-    background-color: #b97fc9;
+.list {
+    background-color: #ebe9e9;
+    border-radius: 5px;
+    width: 100%;
 }
-.grass {
-    background-color: #9bcc50;
+.move_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    background-color: #ebe9e9;
+    border-radius: 5px;
 }
-.fairy {
-   background-color: #fdb9e9; 
+.move_list p {
+    background-color: #fff;
+    padding: 5px;
+    margin: 5px;
 }
-.fire {
-    background-color: #fd7d24;
+.pokemon_container h2 {
+    text-align: center;
 }
-.eletric {
-    background-color: #f3de25;
-}
-.water {
-    background-color: #4592c4;
-}
-.rock {
-    background-color: #a38c21;
-}
-.ground {
-    background-color: #ab9842;
-}
-.steel {
-    background-color: #9eb7b8;
-}
-.bug {
-    background-color: #729f3f;
-}
-.flying {
-    background-color:#ffffff;
-}
-.normal {
-    background-color: #a4acaf;
-}
-.fight {
-    background-color: #d56723;
-}
-.ice {
-    background-color: #51c4e7;
-}
-.dark {
- background-color: #707070;
-}
-.psychic {
-    background-color: #f366b9;
-}
-.dragon {
-    background: linear-gradient(#f16e57,#53a4cf);
-
-}
-.ghost {
-    background-color: #7b62a3;
+@media (min-width: 0px) and (max-width: 1024px){
+    .img img{
+        width: 250px;
+        padding: 5px;
+    }
 }
