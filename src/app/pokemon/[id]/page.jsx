@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import styles from  "./pokemonPage.module.css"
 import Image from "next/image"
 import Loading from "@/components/loading/Loading"
+import { Button } from "@/components/pagination/Button"
 
 
 export default function Pokemon() {
@@ -25,13 +26,16 @@ export default function Pokemon() {
     useEffect(() => {
         getPokemonInfo()
     }, [])
-
+    let before = parseInt(params.id) - 1
+    let after = parseInt(params.id) + 1
     return (
         <>
             { loading ? <Loading /> : (
             <div className={styles.infos_container}>
                 <div className={styles.img}>
+                    <Button pag="anterior" id={before}/>
                     <Image src={infos.sprites?.other?.dream_world?.front_default} alt={infos.name} width="0" height="0" /> 
+                    <Button pag="proximo" id={after}/>
                     <p>Tipo: <span className={`${infos.types[0].type.name}`}>{infos.types[0].type.name}</span> 
                     {infos.types[1]?.type?.name && 
                     <span className={`${infos.types[1].type.name}`}> 
@@ -44,7 +48,7 @@ export default function Pokemon() {
                     <div className={styles.list}>
                         <p><strong>Nº </strong> {infos.id}</p>
                         <p><strong>Nome: </strong>{infos.name}</p>
-                        <p><strong>Hidden Ability: </strong>{infos?.abilities[1].ability.name}</p>
+                        {infos?.abilities[1]?.ability?.name ? (<p><strong>Hidden Ability: </strong>{infos?.abilities[1].ability.name}</p>) : 'o pokemon não possui H/A ( Hidden  Ability)'}   
                         <hr />
                         <ul>
                             {infos.stats.map((item) => (
