@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import styles from  "./pokemonPage.module.css"
 import Image from "next/image"
 import Loading from "@/components/loading/Loading"
-import { Button } from "@/components/pagination/Button"
+import Link from "next/link"
 
 
 export default function Pokemon() {
@@ -32,10 +32,12 @@ export default function Pokemon() {
         <>
             { loading ? <Loading /> : (
             <div className={styles.infos_container}>
+                <div className={styles.pagination}>
+                {params.id == 1 ? '' : (<Link href={`/pokemon/${before}`}>&#9665; Nº {before}</Link>)}
+                <Link href={`/pokemon/${after}`}>Nº {after} &#9655;</Link>
+                </div>
                 <div className={styles.img}>
-                    <Button pag="anterior" id={before}/>
                     <Image src={infos.sprites?.other?.dream_world?.front_default} alt={infos.name} width="0" height="0" /> 
-                    <Button pag="proximo" id={after}/>
                     <p>Tipo: <span className={`${infos.types[0].type.name}`}>{infos.types[0].type.name}</span> 
                     {infos.types[1]?.type?.name && 
                     <span className={`${infos.types[1].type.name}`}> 

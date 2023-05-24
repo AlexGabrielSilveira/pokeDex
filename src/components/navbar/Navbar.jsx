@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./navbar.module.css"
 import Image from "next/image";
+import Input from "../input/Input";
 
 export default function Navbar() {
     return (
@@ -9,7 +10,7 @@ export default function Navbar() {
                 <Link href="/"><Image src="/pokeball.png" width="40" height="40" alt="logo"/></Link>
                 <h1>PokeDex</h1>
                 <div>
-                    <input type="text" placeholder="Pesquise algo ..."/>
+                    <Input />
                 </div>
             </div>
         </nav>

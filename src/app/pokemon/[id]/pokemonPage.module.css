@@ -1,6 +1,18 @@
 .infos_container {
     margin-top: 80px;
 }
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+.pagination a {
+    background-color: #ebe9e9;
+    padding: 10px;
+    color: #222;
+    font-weight: bold;
+    text-decoration: none;
+}
 .img {
     text-align: center;
 }
