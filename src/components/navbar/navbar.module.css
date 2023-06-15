@@ -27,6 +27,9 @@
 }
 .navbar input {
     width: 350px;
+    padding: 5px;
+    border: none;
+    outline: none;
 }
 .div_search a{
     position: fixed;
@@ -40,6 +43,11 @@
     align-items: center;
     border-radius: 0px 0px 0px 10px;
     background-color: #f9f9f9;
+    transition: 150ms;
+}
+.div_search a:hover {
+    transition: 150ms;
+    background-color: #d80808ea;
 }
 .div_search img {
     margin: 2px;

@@ -28,7 +28,7 @@ export default function Card({ res }) {
     return (
         <>
             {load == true ? '' : (
-                <Link href="/">
+                <Link href={`/pokemon/${data.id}`}>
                     <div className={styles.card}>
                             <Image src={data?.sprites?.other?.dream_world?.front_default} width={120} height={120} alt='pokemon'/>
                             <p>{data.name}</p>

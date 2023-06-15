@@ -33,7 +33,7 @@ export default function Navbar() {
             </div>
             {data.length == 0 ? '' : (
                 <div className={styles.div_search}>
-                    <Link href="/"> 
+                    <Link href={`/pokemon/${data.id}`}> 
                         <Image src={data?.sprites?.other?.dream_world?.front_default} width={50} height={50} alt="pokemon image"/>
                         <div>
                             <p>{data.name}</p>  

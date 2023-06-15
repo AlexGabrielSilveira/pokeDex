@@ -8,7 +8,7 @@ export default function Home() {
   const[pokemons, setPokemons] = useState([])
   const[loading, setLoading] = useState(true)
 
-  const maxPokemons = 10
+  const maxPokemons = 151
 
   async function getPokemons() {
     let res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${maxPokemons}`)
