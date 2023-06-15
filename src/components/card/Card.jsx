@@ -1,49 +1,44 @@
+"use client"
 
 import { useEffect, useState } from 'react'
 import styles from './card.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Card({ pokemon }) {
-    const[pokemonImage, setPokemonImage] = useState([])
+export default function Card({ res }) {
+    const[data, setData] = useState([])
     const[pokemonType, setPokemonType] = useState([])
+    const[load, setLoad] = useState(true)
+    let api = res.url
 
-    function getImagePokemon() {
 
-        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`)
+    function getPokemons() {
+        fetch(api)
         .then(res => res.json())
         .then(data => {
-            let image = data.sprites.other.dream_world.front_default
+            setData(data)
             let type = data.types.map(item => item.type.name)
             setPokemonType(type)
-            setPokemonImage(image)
-            
+            setLoad(false)
         })
-
     }
-    
     useEffect(() => {
-    getImagePokemon()
-   }, [])
-
+        getPokemons()
+    }, [])
     return (
-        <div className={styles.card_container}>
-            <div className={styles.card}>       
-                <Link href={`/pokemon/${pokemon.id}`}>
-                    <Image src={pokemonImage} width={120} height={120} alt={pokemon.name} />
+        <>
+            {load == true ? '' : (
+                <Link href="/">
+                    <div className={styles.card}>
+                            <Image src={data?.sprites?.other?.dream_world?.front_default} width={120} height={120} alt='pokemon'/>
+                            <p>{data.name}</p>
+                            <div className={styles.types}>
+                                <p className={`${[pokemonType[0]]}`}>{data.types[0].type.name}</p>
+                                {pokemonType[1] && <p className={`${[pokemonType[1]]}`}>{data.types[1].type.name}</p>}
+                            </div>
+                    </div>
                 </Link>
-                    <ul>
-                        <li className={styles.strong}>Nº{pokemon.id}</li>
-                        <li className={styles.pokemon_name}>{pokemon.name}</li>
-                        <div className={styles.type}>
-                            {console.log(`${[pokemonType[0]]}`)}
-                            <span className={`${[pokemonType[0]]}`}>{pokemonType[0]}</span> 
-                            {pokemonType[1] && <span className={`${[pokemonType[1]]}`}> 
-                                {pokemonType[1]}
-                            </span>}
-                        </div>
-                    </ul>
-            </div>
-        </div>
+            )}
+        </>
     )
 }

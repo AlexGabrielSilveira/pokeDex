@@ -1,55 +1,17 @@
-.card_container {
-    display: flex;
-}
-.card_container {
-    background-color: #e7e5e5;
-    padding: 10px;
+.card {
+    background-color: #f3f3f3;
+    box-shadow: 0px 2px 8px 1px #d1d0d0;
     margin: 10px;
-    border-radius: 5px;
-
-    box-shadow: 0px 5px 20px 0px #9b9a9a;
-    border: 1px solid #22222248;
-    width: 150px;
-    max-width: 150px;
-}
-.card ul {
-    display: flex;
-    flex-direction: column;
-}
-.strong {
-    color: #91919f;
-    font-weight: bold;
-    font-size: 10pt;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-.card li {
-    list-style-type: none;
-}
-.card img {
-    background-color: transparent;
-    min-width: 120px;
-    min-height: 120px;
-}
-.card a {
-    text-decoration: none;
-}
-.pokemon_name {
+    padding: 10px;
     text-align: center;
-    color: #222;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    border-radius: 10px;
 }
-.type {
+.types {
     display: flex;
     justify-content: center;
-    width: 100%;
-    padding: 5px;
 }
-.type span {
-    border-radius: 50px;
-    margin: 1px;
-    padding: 3px 8px 3px 8px;
+.types p {
+    padding: 2px 8px 2px 8px;
+    margin: 2px;
+    border-radius: 10px;
 }
-
-/* pokemon types */
-

@@ -3,13 +3,12 @@
 import { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import Card from '@/components/card/Card'
-import Loading from '@/components/loading/Loading'
 
 export default function Home() {
   const[pokemons, setPokemons] = useState([])
   const[loading, setLoading] = useState(true)
 
-  const maxPokemons = 151
+  const maxPokemons = 10
 
   async function getPokemons() {
     let res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${maxPokemons}`)
@@ -28,13 +27,13 @@ export default function Home() {
 
   return (
     <>
-      {loading ? <Loading /> : (
+      {loading ? <h1>carregando</h1> : (
         <>
-          <h1 className={styles.tittle}><span>Poke</span>Dex</h1>
           <div className={styles.pokemon_container}>
             {pokemons.map((pokemon) => (
-              <Card pokemon={pokemon} key={pokemon.id}/>
+              <Card res={pokemon} key={pokemon.id}/>
             ))}
+            
         </div>
         </>
       )}
