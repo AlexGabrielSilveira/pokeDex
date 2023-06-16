@@ -47,7 +47,7 @@
 }
 .div_search a:hover {
     transition: 150ms;
-    background-color: #d80808ea;
+    background: linear-gradient(#f72b2b,#d80808);
 }
 .div_search img {
     margin: 2px;

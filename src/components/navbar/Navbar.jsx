@@ -16,11 +16,19 @@ export default function Navbar() {
         fetch(`https://pokeapi.co/api/v2/pokemon/${value}`)
         .then(res => res.json())
         .then(data => {
-            let type = data.types.map(item => item.type.name)
+            let type = data?.types?.map(item => item?.type?.name)
             setPokemonType(type)
             setData(data)
         })
 
+    }
+    function showDisplay() {
+        let div = document.getElementsByClassName('.div_search')
+        if(div.style.display == "block") {
+            div.style.display = "none"
+        }else {
+            div.style.display = "block"
+        }
     }
     return (
         <nav>
@@ -31,20 +39,20 @@ export default function Navbar() {
                 </div>
                 <input  placeholder="Pesquise algo ..." onChange={searchPokemon}/>
             </div>
-            {data.length == 0 ? '' : (
-                <div className={styles.div_search}>
-                    <Link href={`/pokemon/${data.id}`}> 
-                        <Image src={data?.sprites?.other?.dream_world?.front_default} width={50} height={50} alt="pokemon image"/>
-                        <div>
-                            <p>{data.name}</p>  
-                            <>
-                                <p className={`${[pokemonType[0]]}`}>{data.types[0].type.name}</p>
-                                {pokemonType[1] && <p className={`${[pokemonType[1]]}`}>{data.types[1].type.name}</p>}
-                            </>
-                        </div>
-                    </Link>
-                </div>
-            )}
+                {data.length == 0 ? '' : (
+                    <div className={styles.div_search}>
+                        <Link href={`/pokemon/${data.id}`} onClick={showDisplay}> 
+                            <Image src={data?.sprites?.other?.dream_world?.front_default} width={50} height={50} alt="pokemon image"/>
+                            <div>
+                                <p>{data.name}</p>  
+                                <>
+                                    <p className={`${[pokemonType[0]]}`}>{data.types[0].type.name}</p>
+                                    {pokemonType[1] && <p className={`${[pokemonType[1]]}`}>{data.types[1].type.name}</p>}
+                                </>
+                            </div>
+                        </Link>
+                    </div>
+                )}
         </nav>
     )
 }
