@@ -9,6 +9,7 @@ import Image from 'next/image'
 export default function PokemonPage() {
     const[data, setData] = useState([])
     const[pokemonType, setPokemonType] = useState([])
+    const[weaks, setWeaks] = useState([])
     const[load, setLoad] = useState(true)
 
     let params = useParams()
@@ -21,8 +22,18 @@ export default function PokemonPage() {
             let type = data.types.map(item => item.type.name)
             setPokemonType(type)
             setData(data)
-            setLoad(false)
+            getWeak(type)
         })
+    }
+    async function getWeak(types) {
+        for(let type of types) {
+            let res = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
+            let data = await res.json()
+
+            setWeaks(data.damage_relations.double_damage_from)
+            setLoad(false)
+            console.log(data.damage_relations)
+        }
     }
     useEffect(() => {
         getPokemon()
@@ -30,7 +41,6 @@ export default function PokemonPage() {
     let before = parseInt(params.id) - 1
     let after = parseInt(params.id) + 1
 
-    // weaks
     return (
         <>
             {load == true ? <h1>carregando</h1> : (
@@ -40,7 +50,7 @@ export default function PokemonPage() {
                     <div>
                         {before == 0 ? '' : <Link href={`/pokemon/${before}`}>Nº{before}</Link>}
                         <Link href={`/pokemon/${after}`}>Nº{after}</Link>
-                    </div>
+                    </div> 
                 </div>
                 <div className={styles.card}>
                     <Image src={data?.sprites?.other?.dream_world?.front_default} width="350" height="350" alt='pokemon'/>
@@ -52,8 +62,10 @@ export default function PokemonPage() {
                         </div>
                         <div className={styles.weaks}>
                             <h3>Fraquezas</h3>
-                            <p>essa api é uma bosta !</p>
-                        </div>
+                            {weaks.map(weak => (
+                                <p>{weak.name}</p>
+                            ))} 
+                        </div> 
                     </div>
                 </div>
             </div>
