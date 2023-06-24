@@ -46,7 +46,7 @@ export default function Navbar() {
                             <div>
                                 <p>{data.name}</p>  
                                 <>
-                                    <p className={`${[pokemonType[0]]}`}>{data.types[0].type.name}</p>
+                                    {pokemonType[0] && <p className={`${[pokemonType[0]]}`}>{data.types[0].type.name}</p>}
                                     {pokemonType[1] && <p className={`${[pokemonType[1]]}`}>{data.types[1].type.name}</p>}
                                 </>
                             </div>

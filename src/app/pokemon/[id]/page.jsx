@@ -32,7 +32,6 @@ export default function PokemonPage() {
 
             setWeaks(data.damage_relations.double_damage_from)
             setLoad(false)
-            console.log(data.damage_relations)
         }
     }
     useEffect(() => {
@@ -53,19 +52,21 @@ export default function PokemonPage() {
                     </div> 
                 </div>
                 <div className={styles.card}>
-                    <Image src={data?.sprites?.other?.dream_world?.front_default} width="350" height="350" alt='pokemon'/>
-                    <div className={styles.types_weaks}>
-                        <div className={styles.types}>
-                            <h3>Tipo</h3>
-                            <p className={`${[pokemonType[0]]}`}>{data.types[0].type.name}</p>
-                            {pokemonType[1] && <p className={`${[pokemonType[1]]}`}>{data.types[1].type.name}</p>} 
+                    <div className={styles.card_pokemon}>
+                        <Image src={data?.sprites?.other?.dream_world?.front_default} width="150" height="150" alt='pokemon'/>
+                        <div className={styles.types_weaks}>
+                            <div className={styles.types}>
+                                <h3>Tipo</h3>
+                                <p className={`${[pokemonType[0]]}`}>{data.types[0].type.name}</p>
+                                {pokemonType[1] && <p className={`${[pokemonType[1]]}`}>{data.types[1].type.name}</p>} 
+                            </div>
+                            <div className={styles.weaks}>
+                                <h3>Fraquezas</h3>
+                                {weaks.map(weak => (
+                                    <p>{weak.name}</p>
+                                ))} 
+                            </div> 
                         </div>
-                        <div className={styles.weaks}>
-                            <h3>Fraquezas</h3>
-                            {weaks.map(weak => (
-                                <p>{weak.name}</p>
-                            ))} 
-                        </div> 
                     </div>
                 </div>
             </div>

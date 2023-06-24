@@ -59,8 +59,16 @@
     border-radius: 5px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-@media (min-width: 0px) and (max-width: 1024px) {
+@media (min-width: 0px) and (max-width: 650px) {
     .navbar h1 {
         display: none;
     } 
+    .navbar img {
+        margin-left: 0;
+        max-width: 40px;
+        padding: 5px;
+    }
+    .div_search a{
+        width: 320px;
+    }
 }
